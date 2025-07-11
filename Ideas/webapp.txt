@@ -1,0 +1,27 @@
+Satenske Ruze
+ *********** Plan ***********
+- Dva korisnika (admin i kupci)
+- Pocetna strana sa informacijama (sta radimo, kako , gde, do mejla do insta strane) 
+- deo sa slikama koje bi mogli da poruce (admin moze da ih doda a ostali da gledaju samo i da mogu da kliknu kupi, 
+  ali da ne mogu ) 
+- deo kao najprodavaniji aranzman
+-------------------------------------------------------------------------------------------------------------------
+
+https://www.figma.com/design/CZ17VP4m9suAxItHv1dYCs/Untitled?node-id=0-1&t=rjxiZHcin4tKzElu-1
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+- Napravi dizajn (možeš čak i u Figma ako želiš da planiraš). ** Done 
+
+- Napravi GitHub repo i init granu. **Done (Grana init treba da se odradi pull request kad se odradi sl korak)
+
+- Postavi osnovni Next.js projekat i napravi home stranicu. 
+
+- Odradi deploy aplikacije i pravi svaki put novu granu i radi pull request u osnovnu
+
+- Odluči da li praviš sopstveni backend (Express) ili koristiš Next.js API routes.
+
+- Napravi model za "aranžman" i počni sa prikazom u "album" stranici.
+
+- Postepeno gradi sve funkcionalnosti (autentifikacija, korpa, itd.)
