@@ -1,10 +1,10 @@
-import Image from "next/image";
-
+import Navbar from "./_components/navbar";
 export default function Home() {
+  const navBarList = ["Contact", "Products", "About Us", "Home"];
   return (
     <div>
       <center>
-        <h1 className="mt-16 text-black font-bold text-2xl">Saten Roses</h1>
+        <Navbar items={navBarList} />
       </center>
     </div>
   );
