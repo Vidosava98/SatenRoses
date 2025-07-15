@@ -4,7 +4,7 @@ type Props = {
 };
 const Navbar = ({ items }: Props) => {
   return (
-    <div className="display flex flex-row-reverse bg-(--primary) shadow-xl">
+    <div className="display flex flex-row-reverse bg-(--foreground) shadow-xl">
       {items.map((item, i) => (
         <div key={i} className="p-8 font-bold text-white text-[20px]">
           {item}

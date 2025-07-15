@@ -6,6 +6,7 @@
   --primary: #5e7db2;
   --secondary: #a8a0d1;
   --accent: #927bbf;
+  --black: #000000;
 }
 
 @theme inline {
