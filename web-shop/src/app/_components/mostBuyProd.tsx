@@ -1,18 +1,28 @@
 import React from "react";
+import Product from "./product";
 
 export const MostBuyProd = () => {
+  const product1: { src: string; desc: string; price: string } = {
+    src: "./data/1.png",
+    desc: "Red roses",
+    price: "$10",
+  };
+  const product2: { src: string; desc: string; price: string } = {
+    src: "./data/1.png",
+    desc: "Red roses",
+    price: "$10",
+  };
+  //Create an API for data, MongoDB
+  const products = [product1, product2];
   return (
-    <div className="my-16 ">
-      <div className="flex row justify-center items-center gap-8">
-        <img
-          src="./data/1.png"
-          alt="Most Buying 1"
-          className="w-32 md:w-32 lg:w-80 h-32 md:h-32 lg:h-80 my-16"
-        />
-        <div>
-          <p>Red roses</p>
-          <p>Price $10</p>
-        </div>
+    <div className="p-16 md:m-32 m-4">
+      <p className="text-black text-4xl md:text-6xl font-semibold text-center">
+        Popular Product
+      </p>
+      <div className="flex flex-wrap justify-center text-center">
+        {products.map((el, index) => (
+          <Product {...el} key={index} />
+        ))}
       </div>
     </div>
   );
