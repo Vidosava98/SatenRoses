@@ -10,7 +10,7 @@ const Start = () => {
         <p className="text-black text-4xl md:text-6xl font-semibold text-center">
           Each satin petal, a touch of devotion.
         </p>
-        <p className="text-2xl md:text-4xl ">Delicately Handmade</p>
+        <p className="text-2xl md:text-4xl lg:text-4xl ">Delicately Handmade</p>
       </div>
     </div>
   );
