@@ -22,10 +22,10 @@ function Gallery() {
   const products = [product1, product2];
   return (
     <div className="">
-      <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold mb-16 text-center">
+      <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold mb-16 mt-8 lg:mb-32 md:mb-32 lg:mt-0 md:mt-0 text-center">
         Gallery
       </p>
-      <div className="flex flex-row justify-center m-8">
+      <div className="flex flex-row justify-center mx-8 mb-8 mt-16">
         <button
           type="button"
           aria-label="Previous slide"
