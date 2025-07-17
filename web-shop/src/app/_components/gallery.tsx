@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import Photo from "./photo";
 
 function Gallery() {
   const product1: { src: string; desc: string; price: string; color: string } =
@@ -17,7 +18,6 @@ function Gallery() {
       price: "$10",
       color: "red",
     };
-  const [buy, setBuy] = useState(1);
   //Create an API for data, MongoDB
   const products = [product1, product2];
   return (
@@ -25,11 +25,11 @@ function Gallery() {
       <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold mb-16 text-center">
         Gallery
       </p>
-      <div className="flex flex-col lg:flex-row justify-center m-8">
+      <div className="flex flex-row justify-center m-8">
         <button
           type="button"
           aria-label="Previous slide"
-          className="flex items-center mt-32 mr-8 justify-center w-10 h-10 border rounded-full hover hover:bg-gray-100 transition"
+          className="flex items-center mt-96 md:mt-32 lg:mt-32 mr-4 lg:mr-12 md:mr-12 justify-center w-10 h-10 border rounded-full hover cursor-pointer hover:bg-[#fecdcd] transition"
         >
           <svg width="14" height="24" viewBox="0 0 14 24">
             <polyline
@@ -40,29 +40,21 @@ function Gallery() {
             />
           </svg>
         </button>
-        <div className="flex flex-col text-left pr-16 lg:mt-24">
-          <p className="text-2xl md:text-4xl lg:text-4xl ">{product1.desc}</p>
-          <p className="text-2xl md:text-4xl lg:text-4xl pb-8">
-            {product1.price}
-          </p>
-          <div className="flex flex-row">
-            <button className="bg-green-500 hover rounded-3xl mr-8 px-4 py-3">
-              Add to buy
-            </button>
-            <input
-              type="number"
-              className="border-none w-16 text-center shadow-[0_4px_2px_-2px_rgba(0,0,0,0.2)]"
-              placeholder="More"
-              value={buy}
-              onChange={(e) => setBuy(Number(e.target.value))}
+        <Photo {...product1} />
+        <button
+          type="button"
+          aria-label="Next slide"
+          className="flex items-center  mt-96 md:mt-32 lg:mt-32 ml-4 lg:ml-12 md:ml-12 justify-center w-10 h-10 border rounded-full hover:bg-[#fecdcd]  cursor-pointer transition"
+        >
+          <svg width="14" height="24" viewBox="0 0 14 24">
+            <polyline
+              fill="none"
+              stroke="#000"
+              strokeWidth="1.4"
+              points="1.225,1 12.775,12 1.225,23"
             />
-          </div>
-        </div>
-        <img
-          src={product1.src}
-          alt="Not found"
-          className="shadow-xl p-8 md:p-0 lg:p-0 w-96 h-96"
-        />
+          </svg>
+        </button>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ function MostBuyProd() {
   //Create an API for data, MongoDB
   const products = [product1, product2];
   return (
-    <div className="p-8 md:m-24 m-4">
+    <div className="md:m-24 m-4">
       <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold text-center">
         The Most Popular Products
       </p>

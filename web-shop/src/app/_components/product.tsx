@@ -7,7 +7,7 @@ function Product({ src, desc, price }: Props) {
       <img
         src={src}
         alt="Most Buying 1"
-        className="w-64 md:w-32 lg:w-80 h-32 md:h-32 lg:h-80 md:my-16 my-4"
+        className="w-64 md:w-32 lg:w-80 h-32 md:h-32 lg:h-80 md:my-16 my-4 rounded-xl"
       />
       <div>
         <p className="text-black text-2xl md:text-xl text-center">{desc}</p>
