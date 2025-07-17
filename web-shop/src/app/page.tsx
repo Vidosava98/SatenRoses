@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <div className="font-serif">
       <center>
-        <div className="bg-white">Free Shipping On Orders over 50$</div>
         <Navbar items={navBarList} />
         <Start />
         <AboutUs />
