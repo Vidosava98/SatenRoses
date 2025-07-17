@@ -1,6 +1,6 @@
 const Start = () => {
   return (
-    <div className="relative">
+    <div className="relative" id="start">
       <img
         src="./data/bc.png"
         alt="Not found"

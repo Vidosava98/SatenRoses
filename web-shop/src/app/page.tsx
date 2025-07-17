@@ -9,8 +9,8 @@ export default function Home() {
     "Buy",
     "Contact",
     "All Products",
-    "About Us",
     "The Most Popular",
+    "About Us",
     "Home",
   ];
   return (
