@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useState } from "react";
 import Photo from "./photo";
 
 function Gallery() {
@@ -11,15 +10,15 @@ function Gallery() {
       price: "$10",
       color: "#880808",
     };
-  const product2: { src: string; desc: string; price: string; color?: string } =
-    {
-      src: "./data/1.png",
-      desc: "Red roses",
-      price: "$10",
-      color: "#880808",
-    };
+  // const product2: { src: string; desc: string; price: string; color?: string } =
+  //   {
+  //     src: "./data/1.png",
+  //     desc: "Red roses",
+  //     price: "$10",
+  //     color: "#880808",
+  //   };
   //Create an API for data, MongoDB
-  const products = [product1, product2];
+  //const products = [product1, product2];
   return (
     <div className="" id="gallery">
       <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold mb-16 mt-8 lg:mb-32 md:mb-32 lg:mt-0 md:mt-0 text-center">
