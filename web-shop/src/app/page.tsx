@@ -2,6 +2,7 @@ import Navbar from "./_components/navbar";
 import MostBuyProd from "./_components/mostBuyProd";
 import Start from "./_components/start";
 import AboutUs from "./_components/aboutUs";
+import Gallery from "./_components/gallery";
 export default function Home() {
   const navBarList = [
     "Contact",
@@ -18,6 +19,7 @@ export default function Home() {
         <Start />
         <AboutUs />
         <MostBuyProd />
+        <Gallery />
       </center>
     </div>
   );
