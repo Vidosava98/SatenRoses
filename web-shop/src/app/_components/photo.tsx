@@ -3,10 +3,13 @@ type Props = { src: string; desc: string; price: string; color: string };
 function Photo({ src, desc, price, color }: Props) {
   const [buy, setBuy] = useState(1);
   const [colorRose, setColorRose] = useState(color);
+  useEffect(() => {
+    setColorRose(color);
+  }, [color]);
   return (
-    <div className="flex flex-col lg:flex-row md:flex-row">
+    <div className="flex flex-col items-center justify-centermin-h-[400px] lg:flex-row md:flex-row">
       <div className="flex flex-col text-left lg:pr-16 md:pr-16 pr-1 lg:mt-24">
-        <p className="text-2xl md:text-4xl lg:text-4xl ">{desc}</p>
+        <p className="text-2xl md:text-4xl lg:text-4xl max-w-64">{desc}</p>
         <p className="text-2xl md:text-4xl lg:text-4xl pb-8">{price}</p>
         <p className="">
           {/* <label>Pick color</label> */}
@@ -33,7 +36,7 @@ function Photo({ src, desc, price, color }: Props) {
       <img
         src={src}
         alt="Not found"
-        className="py-8 px-4 md:p-0 lg:p-0 w-96 h-84 rounded-xl"
+        className="py-8 px-4 md:p-0 lg:p-0 w-[500px] h-[500px] object-contain rounded-xl"
       />
     </div>
   );
