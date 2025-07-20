@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useState } from "react";
 import Photo from "./photo";
 
 function Gallery() {
@@ -9,7 +8,7 @@ function Gallery() {
       src: "./data/1.png",
       desc: "Red roses",
       price: "$10",
-      color: "#880808",
+      color: "#880808,
     },
     {
       src: "./data/2.png",
@@ -46,7 +45,6 @@ function Gallery() {
   const handleNext = () => {
     setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
   };
-
   return (
     <div className="" id="gallery">
       <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold mb-16 mt-8 lg:mb-32 md:mb-32 lg:mt-0 md:mt-0 text-center">

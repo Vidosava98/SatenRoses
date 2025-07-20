@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 type Props = { src: string; desc: string; price: string; color: string };
 function Photo({ src, desc, price, color }: Props) {
   const [buy, setBuy] = useState(1);
