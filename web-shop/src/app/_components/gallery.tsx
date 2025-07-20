@@ -1,35 +1,35 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Photo from "./photo";
 
 function Gallery() {
   const products = [
     {
-      src: "./data/1.png",
+      src: "/data/1.png",
       desc: "Red roses",
       price: "$10",
-      color: "#880808,
+      color: "#880808",
     },
     {
-      src: "./data/2.png",
+      src: "/data/2.png",
       desc: "Pink roses with tady bear and botle message",
       price: "$25",
       color: "#f5a6b4",
     },
     {
-      src: "./data/3.png",
+      src: "/data/3.png",
       desc: "Pink roses",
       price: "$15",
       color: "#f5a6b4",
     },
     {
-      src: "./data/4.png",
+      src: "/data/4.png",
       desc: "Pink roses",
       price: "$12",
       color: "#f5a6b4",
     },
     {
-      src: "./data/5.png",
+      src: "/data/5.png",
       desc: "Pink and black roses",
       price: "$13",
       color: "#ffc0cb",
@@ -66,7 +66,7 @@ function Gallery() {
             />
           </svg>
         </button>
-        <Photo {...products[currentIndex]} />
+        {products.length > 0 && <Photo {...products[currentIndex]} />}
         <button
           type="button"
           onClick={handleNext}
