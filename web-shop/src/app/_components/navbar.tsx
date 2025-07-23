@@ -3,7 +3,14 @@ type Props = {
   items: string[];
 };
 const Navbar = ({ items }: Props) => {
-  const hrefs = ["", "", "/#gallery", "/#themost", "/#aboutus", "/#start"];
+  const hrefs = [
+    "",
+    "/#contact",
+    "/#gallery",
+    "/#themost",
+    "/#aboutus",
+    "/#start",
+  ];
   return (
     <div className="flex flex-col fixed w-full z-50">
       <div className="bg-white">Free Shipping On Orders over 50$</div>

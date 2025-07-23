@@ -4,6 +4,7 @@ import MostBuyProd from "./_components/mostBuyProd";
 import Start from "./_components/start";
 import AboutUs from "./_components/aboutUs";
 import Gallery from "./_components/gallery";
+import Footer from "./_components/Footer";
 export default function Home() {
   const navBarList = [
     "Buy",
@@ -21,7 +22,7 @@ export default function Home() {
         <AboutUs />
         <MostBuyProd />
         <Gallery />
-        <div className="my-64"></div>
+        <Footer />
       </center>
     </div>
   );
