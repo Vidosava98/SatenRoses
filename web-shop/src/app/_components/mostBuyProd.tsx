@@ -5,12 +5,12 @@ function MostBuyProd() {
   const product1: { src: string; desc: string; price: string } = {
     src: "./data/1.png",
     desc: "Red roses",
-    price: "$10",
+    price: "$22.00",
   };
   const product2: { src: string; desc: string; price: string } = {
     src: "./data/2.png",
-    desc: "Red roses",
-    price: "$10",
+    desc: "Pink roses",
+    price: "$27.90",
   };
   //Create an API for data, MongoDB
   const products = [product1, product2];
