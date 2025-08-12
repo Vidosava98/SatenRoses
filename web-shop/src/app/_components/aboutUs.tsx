@@ -8,7 +8,7 @@ function AboutUs() {
       </p>
       <div className="flex flex-col lg:flex-row justify-center flex-wrap w-80 lg:w-full gap-32 p-4">
         <img
-          src="./data/about.png"
+          src="./data/about.jpg"
           alt="Our main photo"
           className="w-72 h-72 rounded-full lg:mt-48 md:mt-48 mt-16"
         />

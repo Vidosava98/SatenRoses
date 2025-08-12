@@ -34,6 +34,36 @@ function Gallery() {
       price: "$13",
       color: "#ffc0cb",
     },
+    {
+      src: "/data/6.png",
+      desc: "Pink roses",
+      price: "$15",
+      color: "#f5a6b4",
+    },
+    {
+      src: "/data/7.png",
+      desc: "Pink roses",
+      price: "$12",
+      color: "#f5a6b4",
+    },
+    {
+      src: "/data/8.jpg",
+      desc: "Pink and black roses",
+      price: "$13",
+      color: "#ffc0cb",
+    },
+    {
+      src: "/data/9.jpg",
+      desc: "Pink roses",
+      price: "$12",
+      color: "#f5a6b4",
+    },
+    {
+      src: "/data/10.jpeg",
+      desc: "Pink and black roses",
+      price: "$13",
+      color: "#ffc0cb",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

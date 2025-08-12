@@ -8,7 +8,7 @@ function MostBuyProd() {
     price: "$10",
   };
   const product2: { src: string; desc: string; price: string } = {
-    src: "./data/1.png",
+    src: "./data/2.png",
     desc: "Red roses",
     price: "$10",
   };
