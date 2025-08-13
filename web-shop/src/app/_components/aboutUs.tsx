@@ -17,12 +17,10 @@ function AboutUs() {
             Our story
           </p>
           <p className="text-left text-xl">
-            We are a family devoted to sharing love through every handcrafted
-            satin rose. Our passion blossoms in every detail. We are a family
-            devoted to sharing love through every handcrafted satin rose. Our
-            passion blossoms in every detail. We are a family devoted to sharing
-            love through every han dcrafted satin rose. Our passion blossoms in
-            every detail.
+            We are a family business specializing in creating satin roses. Each
+            of our products is crafted with care and attention to detail,
+            offering a unique touch of elegance and beauty. We are devoted to
+            sharing love through every handcrafted satin rose.
           </p>
           <img
             src="./data/logo.png"

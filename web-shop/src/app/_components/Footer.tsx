@@ -1,20 +1,12 @@
 import React from "react";
 
 function Footer() {
-  const hrefs = [
-    "/#start",
-    "/#aboutus",
-    "/#themost",
-    "/#gallery",
-    "/#contact",
-    "",
-  ];
+  const hrefs = ["/#start", "/#aboutus", "/#themost", "/#gallery", ""];
   const navBarList = [
     "Home",
     "About Us",
     "The Most Popular",
     "All Products",
-    "Contact",
     "Buy",
   ];
   return (
@@ -23,11 +15,11 @@ function Footer() {
       id="contact"
     >
       <img
-        className="absolute left-8 lg:left-24 md:left-24 w-24 h-24 transform translate-y-1/2"
+        className="absolute left-8 lg:left-24 md:left-24 w-24 h-24 transform translate-y-1/8"
         src={"./data/rose.png"}
         alt="Rose"
       />
-      <div className="flex flex-col flex-wrap w-64 lg:ml-64 md:ml-64 text-left pl-32 mt-8">
+      <div className="flex flex-col flex-wrap w-64 lg:ml-64 md:ml-64 text-left pl-32 mt-6">
         {navBarList.map((item, i) => (
           <a
             key={i}
@@ -39,7 +31,7 @@ function Footer() {
         ))}
       </div>
       <div className="flex flex-col w-80 lg:ml-16 md:ml-16 mt-8">
-        <p className="text-white">Send me Mail</p>
+        <p className="text-white">Send us Mail</p>
         <a href="mailto:arsic.vida@gmail.com">
           <img
             src="/icons/gmail.svg"
@@ -49,7 +41,7 @@ function Footer() {
         </a>
       </div>
       <div className="flex flex-col w-80 lg:ml-16 md:ml-16 mt-8">
-        <p className="text-white">Follow me here</p>
+        <p className="text-white">Follow us here</p>
         <a href="https://www.facebook.com/satenske.ruze.616102">
           <img
             src="/icons/face.svg"
