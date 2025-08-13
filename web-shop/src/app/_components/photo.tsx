@@ -8,8 +8,10 @@ function Photo({ src, desc, price, color }: Props) {
   }, [color]);
   return (
     <div className="flex flex-col items-center justify-centermin-h-[400px] lg:flex-row md:flex-row">
-      <div className="flex flex-col text-left lg:pr-16 md:pr-16 pr-1 lg:mt-24">
-        <p className="text-2xl md:text-4xl lg:text-4xl max-w-64">{desc}</p>
+      <div className="flex flex-col text-left lg:pr-16 md:pr-16 pr-1 lg:mt-20">
+        <p className="text-2xl md:text-4xl lg:text-4xl min-w-64 max-w-64 min-h-16 max-h-16 lg:min-h-28 lg:max-h-28">
+          {desc}
+        </p>
         <p className="text-2xl md:text-4xl lg:text-4xl pb-8">{price}</p>
         <p className="">
           {/* <label>Pick color</label> */}
@@ -36,7 +38,7 @@ function Photo({ src, desc, price, color }: Props) {
       <img
         src={src}
         alt="Not found"
-        className="py-8 px-4 md:p-0 lg:p-0 w-[500px] h-[500px] object-contain rounded-xl"
+        className="py-8 px-4 md:p-0 lg:p-0 w-[400px] h-[400px] object-fill rounded-xl"
       />
     </div>
   );
