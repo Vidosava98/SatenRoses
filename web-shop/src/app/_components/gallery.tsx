@@ -127,7 +127,7 @@ function Gallery() {
           type="button"
           onClick={handlePrev}
           aria-label="Previous slide"
-          className="absolute left-[-25] top-1 lg:left-45 lg:top-1/5 lg:-translate-y-1/2 flex items-center mt-96 md:mt-32 lg:mt-32 mr-4 lg:mr-12 md:mr-12 justify-center w-10 h-10 border rounded-full hover cursor-pointer hover:bg-[#fecdcd] transition"
+          className="absolute left-[-30] top-9 lg:left-45 lg:top-1/4 lg:-translate-y-1/2 flex items-center mt-96 md:mt-32 lg:mt-32 mr-4 lg:mr-12 md:mr-12 justify-center w-10 h-10 border rounded-full hover cursor-pointer hover:bg-[#fecdcd] transition"
         >
           <svg width="14" height="24" viewBox="0 0 14 24">
             <polyline
@@ -143,7 +143,7 @@ function Gallery() {
           type="button"
           onClick={handleNext}
           aria-label="Next slide"
-          className="absolute right-[-25] top-1 lg:right-45 lg:top-1/5 lg:-translate-y-1/2 flex items-center mt-96 md:mt-32 lg:mt-32 ml-4 lg:ml-12 md:ml-12 justify-center w-10 h-10 border rounded-full hover:bg-[#fecdcd]  cursor-pointer transition"
+          className="absolute right-[-30] top-9 lg:right-45 lg:top-1/4 lg:-translate-y-1/2 flex items-center mt-96 md:mt-32 lg:mt-32 ml-4 lg:ml-12 md:ml-12 justify-center w-10 h-10 border rounded-full hover:bg-[#fecdcd]  cursor-pointer transition"
         >
           <svg width="14" height="24" viewBox="0 0 14 24">
             <polyline
