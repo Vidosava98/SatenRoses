@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import  { ShoppingCartIcon } from '@heroicons/react/24/outline'; 
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
+import { ArrowsPointingInIcon } from "@heroicons/react/16/solid";
 type Props = { src: string; desc: string; price: string; color: string };
 function Photo({ src, desc, price, color }: Props) {
   const [buy, setBuy] = useState(1);
@@ -51,14 +52,16 @@ function Photo({ src, desc, price, color }: Props) {
         <div className="fixed top-0 right-0 w-96 h-full bg-white border-l shadow-xl z-50 p-6 overflow-y-auto">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">Your Cart</h2>
-            <button onClick={() => setShowCart(false)} className="text-gray-500 hover:text-black text-xl">✖</button>
+            <button onClick={() => setShowCart(false)} className="text-gray-500 hover:text-black text-xl">
+              <ArrowsPointingInIcon className="w-6 h-6"/>
+            </button>
           </div>
           {cartItems.length === 0 ? (
             <p className="text-gray-500">Cart is empty.</p>
           ) : (
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               {cartItems.map((item, index) => (
-                <li key={index} className="border p-2 rounded">
+                <li key={index} className="border-0 p-2 rounded shadow-xl">
                   <div className="flex flex-row">
                     <div className="flex flex-row items-center justify-center w-95">
                       <div className="flex flex-col pr-8">

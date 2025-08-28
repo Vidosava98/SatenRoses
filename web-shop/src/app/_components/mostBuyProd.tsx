@@ -15,11 +15,11 @@ function MostBuyProd() {
   //Create an API for data, MongoDB
   const products = [product1, product2];
   return (
-    <div className="lg:mt-32 mx-16" id="themost">
+    <div className="lg:mt-32 justify-center" id="themost">
       <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold text-center mt-16 mb-8 lg:mt-32">
         The Most Popular Products
       </p>
-      <div className="flex flex-wrap justify-center text-center rounded-xl shadow-xl p-8 lg:p-16 lg:gap-32 gap-8">
+      <div className="flex flex-wrap justify-center text-center rounded-xl p-4 lg:p-8 lg:gap-16 gap-8 ">
         {products.map((el, index) => (
           <Product {...el} key={index} />
         ))}

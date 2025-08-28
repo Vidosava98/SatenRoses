@@ -118,8 +118,8 @@ function Gallery() {
     setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
   };
   return (
-    <div className="mt-48" id="gallery">
-      <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold mb-16 mt-8 lg:mb-32 md:mb-32 lg:mt-0 md:mt-0 text-center">
+    <div className="mt-32" id="gallery">
+      <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold mb-16 mt-8 lg:mb-24 md:mb-32 lg:mt-0 md:mt-0 text-center">
         Gallery
       </p>
       <div className="flex flex-row justify-center items-center min-h-[500px] mb-8 mt-16 relative">
