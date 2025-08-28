@@ -4,7 +4,6 @@ type Props = {
 };
 const Navbar = ({ items }: Props) => {
   const hrefs = [
-    "",
     "/#contact",
     "/#gallery",
     "/#themost",

@@ -1,13 +1,12 @@
 import React from "react";
 
 function Footer() {
-  const hrefs = ["/#start", "/#aboutus", "/#themost", "/#gallery", ""];
+  const hrefs = ["/#start", "/#aboutus", "/#themost", "/#gallery"];
   const navBarList = [
     "Home",
     "About Us",
     "The Most Popular",
-    "All Products",
-    "Buy",
+    "All Products"
   ];
   return (
     <div

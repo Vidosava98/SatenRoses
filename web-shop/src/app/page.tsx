@@ -7,7 +7,6 @@ import Gallery from "./_components/gallery";
 import Footer from "./_components/Footer";
 export default function Home() {
   const navBarList = [
-    "Buy",
     "Contact",
     "All Products",
     "The Most Popular",
