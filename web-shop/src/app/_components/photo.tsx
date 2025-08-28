@@ -27,6 +27,10 @@ function Photo({ src, desc, price, color }: Props) {
       setShowPopup(false);
     }, 3000);
   };
+  function removefromList(item:{desc: string; price: string; quantity: number; color: string; src:string}){
+    const updatedList = cartItems.filter(el => el !== item);
+    setCartItems(updatedList);
+  }
   return (
     <div className="flex flex-col items-center justify-centermin-h-[400px] lg:flex-row md:flex-row" id = "cart">
      {showPopup && (
@@ -55,16 +59,19 @@ function Photo({ src, desc, price, color }: Props) {
             <ul className="space-y-2">
               {cartItems.map((item, index) => (
                 <li key={index} className="border p-2 rounded">
-                  <div className="flex flex-row items-center justify-center">
-                    <div className="flex flex-col pr-8">
-                      <div><strong>{item.desc}</strong></div>
-                      <div>Price: {item.price}</div>
-                      <div>Count: {item.quantity}</div>
-                      <div>Color: <span style={{ backgroundColor: item.color }} className="inline-block w-4 h-4 rounded-full ml-1 border"></span></div>
+                  <div className="flex flex-row">
+                    <div className="flex flex-row items-center justify-center w-95">
+                      <div className="flex flex-col pr-8">
+                        <div><strong>{item.desc}</strong></div>
+                        <div>Price: {item.price}</div>
+                        <div>Count: {item.quantity}</div>
+                        <div>Color: <span style={{ backgroundColor: item.color }} className="inline-block w-4 h-4 rounded-full ml-1 border"></span></div>
+                      </div>
+                      <div>
+                        <img src={item.src} className="w-20 h-20"/>
+                      </div>
                     </div>
-                    <div>
-                      <img src={item.src} className="w-20 h-20"/>
-                    </div>
+                    <button onClick={() => removefromList(item)} className="text-gray-500 hover:text-black text-xl top-0 right-0 w-5 self-start">✖</button>
                   </div>
                 </li>
               ))}
