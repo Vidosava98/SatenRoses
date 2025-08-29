@@ -12,6 +12,7 @@ function Photo({ src, desc, price, color }: Props) {
   const [cartItems, setCartItems] = useState<{ desc: string; price: string; quantity: number; color: string; src:string }[]>([]);
   const [ordersNumber, setOrderNumbers] = useState(0);
   const [orderFullPrice, setOrderFullPrice] = useState(0);
+  const [showOrderPage, setShowOrderPage] = useState(false);
   const countRendered = useRef(1);
   useEffect(() => {
     countRendered.current = countRendered.current + 1;
@@ -43,24 +44,29 @@ function Photo({ src, desc, price, color }: Props) {
     setOrderNumbers(ordersNumber - 1)
     setOrderFullPrice(orderFullPrice - parseFloat(item.price) * item.quantity)
   }
+  const openOrderPage = () =>{
+    console.log("Order page");
+    setShowCart(false);
+    setShowOrderPage(true);
+  }
   return (
     <div className="flex flex-col items-center justify-centermin-h-[400px] lg:flex-row md:flex-row" id = "cart">
-     {showPopup && (
-      <div className="fixed bottom-6 right-1/2 translate-x-1/2 sm:right-6 sm:translate-x-0 z-50 bg-white border border-gray-300 shadow-xl rounded-xl p-4 w-[90vw] max-w-sm animate-fade-in">
-        <p className="text-black mb-2"> <CheckBadgeIcon className="h-6 w-6"/>You add to cart!</p>
-        <button
-          onClick={() => {
-            setShowCart(true);
-            setShowPopup(false);
-          }}
-          className="bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90"
-        >
-          See cart
-        </button>
-      </div>
-    )}
+      {showPopup && (
+        <div className="fixed bottom-6 right-1/2 translate-x-1/2 sm:right-6 sm:translate-x-0 z-50 bg-white border border-gray-300 shadow-xl rounded-xl p-4 w-[90vw] max-w-sm animate-fade-in">
+          <p className="text-black mb-2"> <CheckBadgeIcon className="h-6 w-6"/>You add to cart!</p>
+          <button
+            onClick={() => {
+              setShowCart(true);
+              setShowPopup(false);
+            }}
+            className="bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90"
+          >
+            See cart
+          </button>
+        </div>
+      )}
       {showCart && (
-        <div className="fixed top-0 right-0 w-96 h-full bg-white border-l shadow-xl z-50 p-6 overflow-y-auto">
+        <div className="fixed top-0 right-0 w-96 h-full bg-white border-l shadow-xl z-50 p-6 overflow-y-auto mt-20 pb-24">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">Your Cart</h2>
             <button onClick={() => setShowCart(false)} className="text-gray-500 hover:text-black text-xl">
@@ -95,13 +101,36 @@ function Photo({ src, desc, price, color }: Props) {
           (<div>
             <div className="flex flex-col text-left space-y-1 mt-4">
               <p>** Check your cart before order.</p>
-              <p>Full price is $<span className="font-bold">{orderFullPrice}</span>.</p>
+              <p>Total $<span className="font-bold">{orderFullPrice}</span>.</p>
             </div>
-            <button className="flex bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90 mt-8">
+            <button className="flex bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90 mt-8" onClick={() => openOrderPage()}>
               Order now
             </button>
           </div>
           )}
+        </div>
+      )}
+      {showOrderPage && (
+        <div className="fixed w-96 h-full top-0 right-0 justify-center z-50 bg-white shadow-xl overflow-y-auto mt-20 p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-bold">Finish your order</h2>
+            <button onClick={() => setShowOrderPage(false)} className="text-gray-500 hover:text-black text-xl">
+              <ArrowsPointingInIcon className="w-6 h-6"/>
+            </button>
+          </div>
+          <div className="text-left">
+            <input type="text" placeholder="Your first name" className="p-2 m-2 shadow-2xs"/>
+            <input type="text" placeholder="Your last name" className="p-2 m-2 shadow-2xs"/>
+            <input type="email" placeholder="Your email" className="p-2 m-2 shadow-2xs"/>
+            <input type="tel" placeholder="Your number" className="p-2 m-2 shadow-2xs"/>
+           <textarea
+            placeholder="Some extra information about your order."
+            className="w-80 h-32 p-3 placeholder:text-sm placeholder:text-gray-400 border border-gray-300 rounded shadow-2xs resize-none"
+           />
+          </div>
+          <button className="flex bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90 mt-8" onClick={() => openOrderPage()}>
+            Confirm
+          </button>
         </div>
       )}
       <div className="flex flex-col text-left lg:pr-16 md:pr-16 pr-1 lg:mt-20">
