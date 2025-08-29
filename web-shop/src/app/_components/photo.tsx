@@ -10,7 +10,8 @@ function Photo({ src, desc, price, color }: Props) {
   const [showPopup, setShowPopup] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState<{ desc: string; price: string; quantity: number; color: string; src:string }[]>([]);
-  
+  const [ordersNumber, setOrderNumbers] = useState(0);
+  const [orderFullPrice, setOrderFullPrice] = useState(0);
   const countRendered = useRef(1);
   useEffect(() => {
     countRendered.current = countRendered.current + 1;
@@ -30,7 +31,8 @@ function Photo({ src, desc, price, color }: Props) {
     };
     setCartItems((prev) => [...prev, newItem]);
     setShowPopup(true);
-
+    setOrderNumbers(ordersNumber + 1);
+    setOrderFullPrice(orderFullPrice + parseFloat(newItem.price) * newItem.quantity);
     setTimeout(() => {
       setShowPopup(false);
     }, 3000);
@@ -38,6 +40,8 @@ function Photo({ src, desc, price, color }: Props) {
   function removefromList(item:{desc: string; price: string; quantity: number; color: string; src:string}){
     const updatedList = cartItems.filter(el => el !== item);
     setCartItems(updatedList);
+    setOrderNumbers(ordersNumber - 1)
+    setOrderFullPrice(orderFullPrice - parseFloat(item.price) * item.quantity)
   }
   return (
     <div className="flex flex-col items-center justify-centermin-h-[400px] lg:flex-row md:flex-row" id = "cart">
@@ -87,6 +91,17 @@ function Photo({ src, desc, price, color }: Props) {
               ))}
             </ul>
           )}
+          {ordersNumber > 0 &&
+          (<div>
+            <div className="flex flex-col text-left space-y-1 mt-4">
+              <p>** Check your cart before order.</p>
+              <p>Full price is $<span className="font-bold">{orderFullPrice}</span>.</p>
+            </div>
+            <button className="flex bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90 mt-8">
+              Order now
+            </button>
+          </div>
+          )}
         </div>
       )}
       <div className="flex flex-col text-left lg:pr-16 md:pr-16 pr-1 lg:mt-20">
@@ -99,7 +114,7 @@ function Photo({ src, desc, price, color }: Props) {
             type="color"
             value={colorRose}
             onChange={(e) => setColorRose(e.target.value)}
-            className="h-10 w-10 rounded border-none mr-8"
+            className="h-10 w-10 border-0 mr-8"
           />
           <input
             type="number"
@@ -114,10 +129,19 @@ function Photo({ src, desc, price, color }: Props) {
             <span>Add to cart</span>
             <ShoppingCartIcon className="h-6 w-6" />
           </button>
-          <button className="flex flex-col justify-center items-center bg-(--accent) hover rounded-3xl mr-8 lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90" onClick={() => setShowCart(true)}>
-            <span>Open cart</span>
-            <ArrowsPointingOutIcon className="h-6 w-6" />
-          </button>
+          <div className="relative">
+            <button
+              className="flex flex-col justify-center items-center bg-[var(--accent)] rounded-3xl mr-8 lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90 hover:brightness-110 transition relative"
+              onClick={() => setShowCart(true)}>
+              <span>Open cart</span>
+              <ArrowsPointingOutIcon className="h-6 w-6" />
+              {ordersNumber > 0 && (
+                <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-md">
+                  {ordersNumber}
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
       <img
