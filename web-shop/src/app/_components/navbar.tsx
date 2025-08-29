@@ -12,7 +12,7 @@ const Navbar = ({ items }: Props) => {
   ];
   return (
     <div className="flex flex-col fixed w-full z-50">
-      <div className="bg-white">Free Shipping On Orders over 50$</div>
+      <div className="bg-(--accent) ">Free Shipping On Orders over 50$</div>
       <div className="display flex flex-row-reverse flex-wrap bg-(--foreground) shadow-xl md:px-16 lg:px-16">
         {items.map((item, i) => (
           <a

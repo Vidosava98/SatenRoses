@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import  { ShoppingCartIcon } from '@heroicons/react/24/outline'; 
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { ArrowsPointingInIcon } from "@heroicons/react/16/solid";
+import { ArrowsPointingOutIcon } from "@heroicons/react/24/outline";
 type Props = { src: string; desc: string; price: string; color: string };
 function Photo({ src, desc, price, color }: Props) {
   const [buy, setBuy] = useState(1);
@@ -9,6 +10,12 @@ function Photo({ src, desc, price, color }: Props) {
   const [showPopup, setShowPopup] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState<{ desc: string; price: string; quantity: number; color: string; src:string }[]>([]);
+  
+  const countRendered = useRef(1);
+  useEffect(() => {
+    countRendered.current = countRendered.current + 1;
+    console.log("Rendered ", countRendered.current);
+  });
   useEffect(() => {
     setColorRose(color);
   }, [color]);
@@ -59,19 +66,19 @@ function Photo({ src, desc, price, color }: Props) {
           {cartItems.length === 0 ? (
             <p className="text-gray-500">Cart is empty.</p>
           ) : (
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {cartItems.map((item, index) => (
                 <li key={index} className="border-0 p-2 rounded shadow-xl">
                   <div className="flex flex-row">
-                    <div className="flex flex-row items-center justify-center w-95">
-                      <div className="flex flex-col pr-8">
-                        <div><strong>{item.desc}</strong></div>
+                    <div className="flex flex-row w-95 justify-between">
+                      <div className="flex flex-col text-left">
+                        <div className="w-40"><strong>{item.desc}</strong></div>
                         <div>Price: {item.price}</div>
                         <div>Count: {item.quantity}</div>
                         <div>Color: <span style={{ backgroundColor: item.color }} className="inline-block w-4 h-4 rounded-full ml-1 border"></span></div>
                       </div>
-                      <div>
-                        <img src={item.src} className="w-20 h-20"/>
+                      <div className="mr-4">
+                        <img src={item.src} className="w-30 h-30"/>
                       </div>
                     </div>
                     <button onClick={() => removefromList(item)} className="text-gray-500 hover:text-black text-xl top-0 right-0 w-5 self-start">✖</button>
@@ -87,19 +94,13 @@ function Photo({ src, desc, price, color }: Props) {
           {desc}
         </p>
         <p className="text-2xl md:text-4xl lg:text-4xl pb-8">{price}</p>
-        <p className="">
+        <p className="flex mb-8 items-center justify-center">
           <input
             type="color"
             value={colorRose}
             onChange={(e) => setColorRose(e.target.value)}
-            className="h-10 w-10 rounded border-none mb-8"
-          ></input>
-        </p>
-        <div className="flex flex-row">
-          <button className="flex flex-col justify-center items-center bg-(--accent) hover rounded-3xl mr-8 lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90" onClick={addToCart}>
-            <span>Add to cart</span>
-            <ShoppingCartIcon className="h-6 w-6" />
-          </button>
+            className="h-10 w-10 rounded border-none mr-8"
+          />
           <input
             type="number"
             className="border-none w-16 text-center shadow-[0_4px_2px_-2px_rgba(0,0,0,0.2)]"
@@ -107,6 +108,16 @@ function Photo({ src, desc, price, color }: Props) {
             value={buy}
             onChange={(e) => setBuy(Number(e.target.value))}
           />
+        </p>
+        <div className="flex flex-row">
+          <button className="flex flex-col justify-center items-center bg-(--accent) hover rounded-3xl mr-8 lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90" onClick={addToCart}>
+            <span>Add to cart</span>
+            <ShoppingCartIcon className="h-6 w-6" />
+          </button>
+          <button className="flex flex-col justify-center items-center bg-(--accent) hover rounded-3xl mr-8 lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90" onClick={() => setShowCart(true)}>
+            <span>Open cart</span>
+            <ArrowsPointingOutIcon className="h-6 w-6" />
+          </button>
         </div>
       </div>
       <img
