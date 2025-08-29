@@ -14,7 +14,7 @@ export default function Home() {
     "Home",
   ];
   return (
-    <div className="font-serif">
+    <div className="font-serif bg-white">
       <center>
         <Navbar items={navBarList} />
         <Start />
