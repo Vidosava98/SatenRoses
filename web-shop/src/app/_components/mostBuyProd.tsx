@@ -12,8 +12,23 @@ function MostBuyProd() {
     desc: "Pink roses",
     price: "$27.90",
   };
+    const product3: { src: string; desc: string; price: string } = {
+    src: "./data/3.png",
+    desc: "Red roses",
+    price: "$22.00",
+  };
+  const product4: { src: string; desc: string; price: string } = {
+    src: "./data/4.png",
+    desc: "Pink roses",
+    price: "$27.90",
+  };
+    const product5: { src: string; desc: string; price: string } = {
+    src: "./data/6.png",
+    desc: "Pink roses",
+    price: "$27.90",
+  };
   //Create an API for data, MongoDB
-  const products = [product1, product2];
+  const products = [product1, product2, product3, product4, product5];
   return (
     <div className="lg:mt-32 justify-center" id="themost">
       <p className="text-black text-2xl md:text-4xl lg:text-4xl font-semibold text-center mt-16 mb-8 lg:mt-32">

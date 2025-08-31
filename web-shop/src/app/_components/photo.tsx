@@ -13,6 +13,7 @@ function Photo({ src, desc, price, color }: Props) {
   const [ordersNumber, setOrderNumbers] = useState(0);
   const [orderFullPrice, setOrderFullPrice] = useState(0);
   const [showOrderPage, setShowOrderPage] = useState(false);
+  const [freeShipping, setFreeShipping] = useState(false);
   const countRendered = useRef(1);
   useEffect(() => {
     countRendered.current = countRendered.current + 1;
@@ -33,7 +34,13 @@ function Photo({ src, desc, price, color }: Props) {
     setCartItems((prev) => [...prev, newItem]);
     setShowPopup(true);
     setOrderNumbers(ordersNumber + 1);
-    setOrderFullPrice(orderFullPrice + parseFloat(newItem.price) * newItem.quantity);
+    const newValue = orderFullPrice + parseFloat(newItem.price) * newItem.quantity;
+    setOrderFullPrice(newValue);
+    if(!freeShipping){
+     if(newValue >= 50){
+      setFreeShipping(true);
+     }
+    }
     setTimeout(() => {
       setShowPopup(false);
     }, 3000);
@@ -42,7 +49,13 @@ function Photo({ src, desc, price, color }: Props) {
     const updatedList = cartItems.filter(el => el !== item);
     setCartItems(updatedList);
     setOrderNumbers(ordersNumber - 1)
-    setOrderFullPrice(orderFullPrice - parseFloat(item.price) * item.quantity)
+    const newValue =  Math.round((orderFullPrice - parseFloat(item.price) * item.quantity) * 100) / 100;
+    setOrderFullPrice(newValue);
+    if(freeShipping){
+     if(newValue < 50){
+      setFreeShipping(false);
+     }
+    }
   }
   const openOrderPage = () =>{
     console.log("Order page");
@@ -66,7 +79,7 @@ function Photo({ src, desc, price, color }: Props) {
         </div>
       )}
       {showCart && (
-        <div className="fixed top-0 right-0 w-96 h-full bg-white border-l shadow-xl z-50 p-6 overflow-y-auto mt-20 pb-24">
+        <div className="fixed top-0 right-0 w-96 h-screen bg-white border-l shadow-xl z-50 p-6 mt-20 pb-24">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">Your Cart</h2>
             <button onClick={() => setShowCart(false)} className="text-gray-500 hover:text-black text-xl">
@@ -76,7 +89,7 @@ function Photo({ src, desc, price, color }: Props) {
           {cartItems.length === 0 ? (
             <p className="text-gray-500">Cart is empty.</p>
           ) : (
-            <ul className="space-y-2">
+            <ul className="space-y-8 overflow-y-auto max-h-3/4 pr-2">
               {cartItems.map((item, index) => (
                 <li key={index} className="border-0 p-2 rounded shadow-xl">
                   <div className="flex flex-row">
@@ -98,14 +111,18 @@ function Photo({ src, desc, price, color }: Props) {
             </ul>
           )}
           {ordersNumber > 0 &&
-          (<div>
-            <div className="flex flex-col text-left space-y-1 mt-4">
-              <p>** Check your cart before order.</p>
-              <p>Total $<span className="font-bold">{orderFullPrice}</span>.</p>
+          (<div className="fixed bottom-0">
+            <div className="flex flex-row items-center mt-4 space-x-28 mb-2">
+              <div className="flex flex-col">
+                <span>Total <span className="font-bold text-3xl">${orderFullPrice}</span>.</span>
+                {!freeShipping &&(<span className="text-red-800">Plus shipping $4.</span>)}
+                {freeShipping &&(<span className="text-red-800">Free shipping!</span>)}
+              </div>
+              <button className="flex bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90 " onClick={() => openOrderPage()}>
+                Order now
+              </button>
             </div>
-            <button className="flex bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90 mt-8" onClick={() => openOrderPage()}>
-              Order now
-            </button>
+             <p className="text-left mb-2">** Check your cart before order.</p>
           </div>
           )}
         </div>
@@ -119,16 +136,25 @@ function Photo({ src, desc, price, color }: Props) {
             </button>
           </div>
           <div className="text-left">
-            <input type="text" placeholder="Your first name" className="p-2 m-2 shadow-2xs"/>
-            <input type="text" placeholder="Your last name" className="p-2 m-2 shadow-2xs"/>
-            <input type="email" placeholder="Your email" className="p-2 m-2 shadow-2xs"/>
-            <input type="tel" placeholder="Your number" className="p-2 m-2 shadow-2xs"/>
+            <div className="flex flex-row"> 
+              <input type="text" placeholder="First name" className="p-2 m-2 shadow-2xs w-36" required/>
+              <input type="text" placeholder="Last name" className="p-2 m-2 shadow-2xs w-36"/>
+            </div>           
+            <div className="flex flex-row">
+              <input type="email" placeholder="Email" className="p-2 m-2 shadow-2xs w-36"/>
+              <input type="tel" placeholder="Phone number" className="p-2 m-2 shadow-2xs w-36"/>
+            </div>
+            <div className="flex flex-row">
+             <input type="text" placeholder="City" className="p-2 m-2 shadow-2xs w-24"/>
+             <input type="text" placeholder="Street" className="p-2 m-2 shadow-2xs w-32"/>
+             <input type="text" placeholder="Number" className="p-2 m-2 shadow-2xs w-20"/>
+            </div>
            <textarea
             placeholder="Some extra information about your order."
-            className="w-80 h-32 p-3 placeholder:text-sm placeholder:text-gray-400 border border-gray-300 rounded shadow-2xs resize-none"
+            className="w-80 h-32 p-3 mt-2 placeholder:text-sm placeholder:text-gray-400 border border-gray-300 rounded shadow-2xs resize-none"
            />
           </div>
-          <button className="flex bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90 mt-8" onClick={() => openOrderPage()}>
+          <button className="fixed flex bg-(--accent) hover rounded-3xl lg:p-4 md:p-4 p-2 cursor-pointer active:scale-90 bottom-2" onClick={() => openOrderPage()}>
             Confirm
           </button>
         </div>
@@ -137,7 +163,7 @@ function Photo({ src, desc, price, color }: Props) {
         <p className="text-2xl md:text-4xl lg:text-4xl min-w-64 max-w-64 min-h-16 max-h-16 lg:min-h-28 lg:max-h-28">
           {desc}
         </p>
-        <p className="text-2xl md:text-4xl lg:text-4xl pb-8">{price}</p>
+        <p className="text-2xl md:text-4xl lg:text-4xl pb-8">${price}</p>
         <p className="flex mb-8 items-center justify-center">
           <input
             type="color"
